@@ -1,7 +1,6 @@
 import { Link2 } from "lucide-react";
 import Header from "../components/layout/Header";
 import Sidebar from "../components/layout/Sidebar";
-import "./ChannelProfilePage.css";
 
 const videos = [
   {
@@ -41,43 +40,51 @@ const videos = [
     theme: "skyline",
   },
 ];
+const themeClass = {
+  field: "art-field-thumb",
+  mountain: "art-mountain-thumb",
+  cosmos: "art-cosmos-thumb",
+  studio: "art-studio-thumb",
+  city: "art-city-thumb",
+  skyline: "art-skyline-thumb",
+};
 
 export default function ChannelProfilePage({ activeItem = "profile", onNavigate }) {
   return (
-    <div className="channel-profile-page">
+    <div className="min-h-screen bg-[#1f1f1f] text-[#f4f4f4]">
       <Sidebar activeItem={activeItem} onNavigate={onNavigate} />
       <Header />
 
-      <main className="channel-profile-main">
-        <h1>HỒ SƠ KÊNH</h1>
+      <main className="ml-[172px] min-h-screen px-11 pt-[94px] pb-12 max-md:ml-0 max-md:px-4 max-md:pt-[92px] max-md:pb-8">
+        <h1 className="m-0 mb-6 text-center text-4xl font-black tracking-normal max-md:text-3xl">HỒ SƠ KÊNH</h1>
 
-        <section className="channel-hero" aria-label="Ảnh bìa kênh" />
+        <section className="art-stadium-hero h-[232px] overflow-hidden rounded-[14px] border border-[#303a3d] max-md:h-[170px]" aria-label="Ảnh bìa kênh" />
 
-        <section className="channel-info">
-          <div className="channel-avatar" aria-label="Ảnh đại diện kênh" />
-          <div className="channel-copy">
-            <h2>Cúp Học Xem Bóng</h2>
-            <p>@CupHocXemBong</p>
-            <p>13,6 N người đăng ký • 85 video</p>
+        <section className="my-7 mb-8 flex items-center gap-6 max-md:items-start max-md:flex-col">
+          <div className="art-profile-avatar size-[126px] shrink-0 rounded-full border-4 border-[#101010]" aria-label="Ảnh đại diện kênh" />
+          <div>
+            <h2 className="m-0 mb-1 text-[28px] font-black">Cúp Học Xem Bóng</h2>
+            <p className="m-0 mb-[9px] text-base text-[#c8c8c8]">@CupHocXemBong</p>
+            <p className="m-0 mb-[9px] text-base text-[#c8c8c8]">13,6 N người đăng ký • 85 video</p>
           </div>
         </section>
 
-        <section className="channel-description">
-          <h3>Mô tả:</h3>
-          <p>
+        <section className="mb-11 ml-3.5">
+          <h3 className="m-0 mb-2.5 text-[23px] font-black">Mô tả:</h3>
+          <p className="m-0 flex items-center gap-2 text-base text-[#f2f2f2]">
             <Link2 size={16} aria-hidden="true" />
             Đây là kênh chuyên phân tích bóng đá
           </p>
         </section>
 
-        <section className="channel-video-grid" aria-label="Video của kênh">
+        <section className="grid grid-cols-3 gap-x-[18px] gap-y-9 max-xl:grid-cols-2 max-md:grid-cols-1" aria-label="Video của kênh">
           {videos.map((video) => (
-            <article key={video.title} className="channel-video-card">
-              <div className={`channel-video-thumb channel-video-thumb-${video.theme}`}>
-                <span>{video.duration}</span>
+            <article key={video.title} className="min-w-0">
+              <div className={`relative aspect-[16/5.25] w-full overflow-hidden rounded-[28px] shadow-[inset_0_-40px_50px_rgba(0,0,0,0.45)] ${themeClass[video.theme]}`}>
+                <span className="absolute right-2 bottom-[7px] rounded-[3px] bg-black/70 px-1.5 py-0.5 text-[11px] text-white">{video.duration}</span>
               </div>
-              <h3>{video.title}</h3>
-              <p>{video.meta}</p>
+              <h3 className="mt-3 mb-1 text-base leading-snug font-medium text-[#f4f4f4]">{video.title}</h3>
+              <p className="m-0 text-sm text-[#b9b9b9]">{video.meta}</p>
             </article>
           ))}
         </section>

@@ -11,8 +11,6 @@ import {
   PlayCircle,
 } from "lucide-react";
 
-import "./Sidebar.css";
-
 const menuItems = [
   { key: "home", label: "Trang chủ", icon: Home },
   { key: "subscriptions", label: "Kênh đã theo dõi", icon: Tv },
@@ -27,24 +25,25 @@ const menuItems = [
 
 export default function Sidebar({ activeItem = "manageVideos", onNavigate }) {
   return (
-    <aside className="sidebar">
-      <div className="sidebar-logo">
+    <aside className="fixed top-0 left-0 z-20 h-screen w-[172px] bg-[#272727] text-[#d6d6d6] max-md:hidden">
+      <div className="flex h-[72px] items-center gap-[18px] border-b border-[#3a3a3a] pl-[30px] text-sm font-bold text-white">
         <PlayCircle size={18} fill="white" />
         <span>PERTERSON</span>
       </div>
 
-      <nav className="sidebar-menu">
+      <nav className="flex flex-col pt-2">
         {menuItems.map((item) => {
           const Icon = item.icon;
+          const isActive = item.key === activeItem;
 
           return (
             <button
               key={item.label}
               type="button"
               onClick={() => onNavigate?.(item.key)}
-              className={`sidebar-item ${item.child ? "child" : ""} ${
-                item.key === activeItem ? "active" : ""
-              }`}
+              className={`flex h-[60px] items-center gap-3 border-0 bg-transparent text-left text-[13px] hover:bg-[#303030] hover:text-white ${
+                item.child ? "pl-12" : "pl-4"
+              } ${isActive ? "font-semibold text-white" : "text-[#cfcfcf]"}`}
             >
               <Icon size={18} />
               <span>{item.label}</span>

@@ -34,24 +34,26 @@ const modalActions = [
   { id: "deletePlaylist", label: "Xóa danh sách phát", icon: Trash2, danger: true },
   { id: "delete", label: "Xóa video khỏi playlist", icon: Trash2, danger: true },
 ];
+const actionButtonClass =
+  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-lg border border-[#343434] bg-[#1b1b1b] px-4 text-sm font-bold text-[#f5f5f5] transition hover:-translate-y-px hover:border-[#5a5a5a] hover:bg-[#252525]";
 
 export default function DemoModalPage() {
   const [modal, setModal] = useState(null);
 
   return (
-    <div className="demo-page">
-      <div className="demo-shell">
-        <div className="demo-header">
-          <span>Peterson UI</span>
-          <h1>Kiểm thử modal</h1>
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(229,9,20,0.18),transparent_32rem),#101010] p-12 text-[#f7f7f7] max-sm:p-7 max-sm:px-[18px]">
+      <div className="mx-auto max-w-[920px]">
+        <div className="mb-7">
+          <span className="mb-2 block text-[13px] font-bold tracking-normal text-[#b6b6b6] uppercase">Peterson UI</span>
+          <h1 className="m-0 text-[32px] leading-tight max-sm:text-[26px]">Kiểm thử modal</h1>
         </div>
 
-        <div className="demo-actions" aria-label="Danh sách modal">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-3" aria-label="Danh sách modal">
           {modalActions.map(({ id, label, icon: Icon, danger }) => (
             <button
               key={id}
               type="button"
-              className={danger ? "demo-button demo-button-danger" : "demo-button"}
+              className={danger ? `${actionButtonClass} border-red-500/45 text-red-200` : actionButtonClass}
               onClick={() => setModal(id)}
             >
               <Icon size={18} aria-hidden="true" />
