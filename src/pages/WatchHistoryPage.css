@@ -1,0 +1,218 @@
+.watch-history-page {
+  min-height: 100vh;
+  background: #181818; /* Nền tối hơn giống với ảnh */
+  color: #f4f4f4;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.watch-history-main {
+  min-height: 100vh;
+  margin-left: 240px; /* Chỉnh lại tùy theo độ rộng thực tế của Sidebar bạn đang dùng */
+  padding: 80px 40px 42px;
+}
+
+.wh-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+  color: #fff;
+}
+
+/* Khung bọc ngoài bảng */
+.wh-table-wrapper {
+  border: 1px solid #333;
+  border-radius: 24px; /* Bo góc to giống trong ảnh */
+  background: transparent;
+  padding: 8px 0;
+  overflow-x: auto;
+}
+
+.wh-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wh-table thead {
+  background: transparent;
+}
+
+.wh-table th {
+  padding: 16px 24px;
+  text-align: left;
+  font-weight: 500;
+  color: #aaa;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Căn chỉnh các cột */
+.th-video { width: 45%; }
+.th-date { text-align: left; }
+.th-views { text-align: left; }
+.th-comments { text-align: left; }
+
+.wh-table td {
+  padding: 16px 24px;
+  vertical-align: top;
+  color: #ccc;
+  font-size: 14px;
+  /* Đã xóa border-top: 1px solid để giống ảnh (không có viền kẻ ngang giữa các hàng) */
+}
+
+/* Hàng hover không cần quá sáng */
+.wh-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.wh-video-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.wh-thumb {
+  position: relative;
+  width: 160px;
+  height: 90px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #333;
+}
+
+.wh-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wh-duration {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.wh-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wh-video-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wh-subtitle {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Badge kênh giống trong ảnh */
+.wh-channel-badge {
+  font-size: 11px;
+  color: #aaa;
+  background: #333;
+  padding: 3px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+/* Các ô số liệu căn lề tương ứng */
+.wh-date-cell, .wh-num-cell {
+  padding-top: 24px !important; /* Đẩy text xuống giữa dòng tương ứng với video */
+}
+
+/* Pagination container (Căn sát góc phải giống hình) */
+.wh-pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 16px 0;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.wh-pagination-items-per-page {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wh-pagination-items-per-page select {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  appearance: auto;
+}
+
+.wh-pagination-items-per-page select option {
+  background: #2a2a2a;
+}
+
+.wh-pagination-info {
+  white-space: nowrap;
+}
+
+.wh-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wh-pagination-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #aaa;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wh-pagination-controls button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.wh-pagination-controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .watch-history-main {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .wh-pagination-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}

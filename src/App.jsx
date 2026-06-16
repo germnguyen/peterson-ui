@@ -7,16 +7,21 @@ import StatisticsPage from "./pages/StatisticsPage";
 import SubscribedChannelsPage from "./pages/SubscribedChannelsPage";
 import UploadVideoPage from "./pages/UploadVideoPage";
 import VideoManagementPage from "./pages/VideoManagementPage";
+import WatchHistoryPage from "./pages/WatchHistoryPage";
 
 export default function App() {
   const [page, setPage] = useState("manageVideos");
   const [selectedPlaylist, setSelectedPlaylist] = useState(null);
 
   function handleNavigate(nextPage, data) {
-    if (["profile", "statistics", "manageVideos", "uploadVideo", "editVideo", "playlists", "playlistDetail", "subscriptions"].includes(nextPage)) {
+    if (["profile", "statistics", "manageVideos", "uploadVideo", "editVideo", "playlists", "playlistDetail", "subscriptions", "history"].includes(nextPage)) {
       if (data) setSelectedPlaylist(data);
       setPage(nextPage);
     }
+  }
+
+  if (page === "history") {
+    return <WatchHistoryPage activeItem={page} onNavigate={handleNavigate} />;
   }
 
   if (page === "subscriptions") {
