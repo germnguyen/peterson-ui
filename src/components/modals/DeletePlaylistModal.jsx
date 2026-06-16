@@ -1,12 +1,7 @@
-import { Trash2, X } from "lucide-react";
+import { AlignHorizontalJustifyEnd, Trash2, X } from "lucide-react";
 
-export default function DeletePlaylistModal({
-  isOpen,
-  onClose,
-  onConfirm,
-  playlistName = "Drafts & Tests - 2024",
-}) {
-  if (!isOpen) return null;
+export default function DeletePlaylistModal({ playlist, onClose, onConfirm }) {
+  const playlistName = playlist?.title || "Danh sách phát";
 
   function handleOverlayMouseDown(event) {
     if (event.target === event.currentTarget) {
@@ -33,11 +28,11 @@ export default function DeletePlaylistModal({
         <h3>Xác nhận xóa danh sách phát</h3>
 
         <p>
-          Bạn có chắc chắn muốn xóa danh sách phát <strong>“{playlistName}”</strong> không?
+          Bạn có chắc chắn muốn xóa danh sách phát <strong>"{playlistName}"</strong> không?
           Hành động này không thể hoàn tác và sẽ gỡ bỏ nhóm video này khỏi kênh của bạn.
         </p>
 
-        <div className="delete-playlist-actions">
+        <div className="delete-playlist-actions"  >
           <button type="button" className="playlist-outline-button" onClick={onClose}>
             Hủy
           </button>

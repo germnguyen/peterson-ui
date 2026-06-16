@@ -6,75 +6,41 @@ import CreatePlaylistModal from '../components/modals/CreatePlaylistModal';
 import EditPlaylistModal from '../components/modals/EditPlaylistModal';
 import DeletePlaylistModal from '../components/modals/DeletePlaylistModal';
 
+// Hàm hỗ trợ tạo dữ liệu playlist ngẫu nhiên
+const generateRandomPlaylists = (count) => {
+  const titles = ['Chill Vibes', 'Acoustic Cover', 'Nhạc Trẻ Thịnh Hành', 'Lofi Study', 'Rap Việt Nổi Bật', 'Nhạc Thư Giãn'];
+  const subtitles = ['Music Cover', 'Top Hits', 'Best Collection', 'Giai Điệu Buồn', 'Năng Lượng Tích Cực'];
+  const visibilities = ['Riêng tư', 'Công khai', 'Không công khai'];
+  const types = ['Danh sách phát', 'Album', 'Podcast'];
+
+  return Array.from({ length: count }, (_, index) => {
+    const id = index + 1;
+    const randomTitle = titles[Math.floor(Math.random() * titles.length)];
+    const randomSubtitle = subtitles[Math.floor(Math.random() * subtitles.length)];
+    const randomVisibility = visibilities[Math.floor(Math.random() * visibilities.length)];
+    const randomType = types[Math.floor(Math.random() * types.length)];
+    const randomDay = Math.floor(Math.random() * 28) + 1;
+    const randomMonth = Math.floor(Math.random() * 12) + 1;
+    const randomViews = Math.floor(Math.random() * 5000);
+    const randomVideoCount = Math.floor(Math.random() * 50) + 1;
+
+    return {
+      id,
+      title: randomTitle,
+      subtitle: randomSubtitle,
+      thumbnail: `https://picsum.photos/seed/playlist${id}/160/90`,
+      type: randomType,
+      visibility: randomVisibility,
+      lastUpdated: `${randomDay} thg ${randomMonth}, 2026`,
+      videoCount: randomVideoCount,
+      views: randomViews,
+    };
+  });
+};
+
 const PlaylistManagementPage = ({ activeItem = 'playlists', onNavigate }) => {
-  const [playlists, setPlaylists] = useState([
-    {
-      id: 1,
-      title: 'Girl',
-      subtitle: 'Music Cover',
-      thumbnail: 'https://via.placeholder.com/160x90?text=Girl+Music',
-      type: 'Danh sách phát',
-      visibility: 'Riêng tư',
-      lastUpdated: '25 thg 5, 2026',
-      videoCount: 5,
-      views: 4,
-    },
-    {
-      id: 2,
-      title: 'Girl',
-      subtitle: 'Music Cover',
-      thumbnail: 'https://via.placeholder.com/160x90?text=Girl+Music',
-      type: 'Danh sách phát',
-      visibility: 'Riêng tư',
-      lastUpdated: '25 thg 5, 2026',
-      videoCount: 5,
-      views: 4,
-    },
-    {
-      id: 3,
-      title: 'Girl',
-      subtitle: 'Music Cover',
-      thumbnail: 'https://via.placeholder.com/160x90?text=Girl+Music',
-      type: 'Danh sách phát',
-      visibility: 'Riêng tư',
-      lastUpdated: '25 thg 5, 2026',
-      videoCount: 5,
-      views: 4,
-    },
-    {
-      id: 4,
-      title: 'Girl',
-      subtitle: 'Music Cover',
-      thumbnail: 'https://via.placeholder.com/160x90?text=Girl+Music',
-      type: 'Danh sách phát',
-      visibility: 'Riêng tư',
-      lastUpdated: '25 thg 5, 2026',
-      videoCount: 5,
-      views: 4,
-    },
-    {
-      id: 5,
-      title: 'Girl',
-      subtitle: 'Music Cover',
-      thumbnail: 'https://via.placeholder.com/160x90?text=Girl+Music',
-      type: 'Danh sách phát',
-      visibility: 'Riêng tư',
-      lastUpdated: '25 thg 5, 2026',
-      videoCount: 5,
-      views: 4,
-    },
-    {
-      id: 6,
-      title: 'Girl',
-      subtitle: 'Music Cover',
-      thumbnail: 'https://via.placeholder.com/160x90?text=Girl+Music',
-      type: 'Danh sách phát',
-      visibility: 'Riêng tư',
-      lastUpdated: '25 thg 5, 2026',
-      videoCount: 5,
-      views: 4,
-    },
-  ]);
+  // Sử dụng hàm tạo ngẫu nhiên, ví dụ tạo 12 items để có thể test phân trang
+  const [playlists, setPlaylists] = useState(generateRandomPlaylists(12));
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -88,7 +54,8 @@ const PlaylistManagementPage = ({ activeItem = 'playlists', onNavigate }) => {
       id: playlists.length + 1,
       title: formData.title,
       subtitle: '',
-      thumbnail: 'https://via.placeholder.com/160x90?text=' + formData.title,
+      // Cập nhật ảnh của playlist mới cũng dùng hình ảnh ngẫu nhiên từ internet
+      thumbnail: `https://picsum.photos/seed/new${playlists.length + 1}/160/90`,
       type: 'Danh sách phát',
       visibility: formData.visibility,
       lastUpdated: new Date().toLocaleDateString('vi-VN'),
