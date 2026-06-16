@@ -84,9 +84,8 @@ const PlaylistManagementPage = ({ activeItem = 'playlists', onNavigate }) => {
     setSelectedPlaylist(null);
   };
 
-  const openEditModal = (playlist) => {
-    setSelectedPlaylist(playlist);
-    setShowEditModal(true);
+  const openEditPage = (playlist) => {
+    onNavigate?.("playlistDetail", playlist);
   };
 
   const openDeleteModal = (playlist) => {
@@ -138,7 +137,7 @@ const PlaylistManagementPage = ({ activeItem = 'playlists', onNavigate }) => {
                         <div className="playlist-actions-inline">
                           <button
                             className="action-btn-inline edit-btn-inline"
-                            onClick={() => openEditModal(playlist)}
+                            onClick={() => openEditPage(playlist)}
                           >
                             Chỉnh sửa
                           </button>

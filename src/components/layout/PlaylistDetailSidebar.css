@@ -1,0 +1,105 @@
+.pds {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.pds-header {
+  margin-bottom: 24px;
+}
+
+.pds-back {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pds-back:hover {
+  color: #fff;
+}
+
+.pds-preview {
+  margin-bottom: 16px;
+}
+
+.pds-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #333;
+  margin-bottom: 16px;
+}
+
+.pds-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pds-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a,
+    #1a1a1a 10px,
+    #222 10px,
+    #222 20px
+  );
+}
+
+.pds-label {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0 0 6px 0;
+}
+
+.pds-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pds-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 20px 0;
+}
+
+.pds-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pds-tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.pds-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pds-tab.active {
+  background: #3f3f3f;
+  font-weight: 500;
+}

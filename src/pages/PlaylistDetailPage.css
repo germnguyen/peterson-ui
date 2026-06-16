@@ -1,0 +1,266 @@
+.playlist-detail-page {
+  min-height: 100vh;
+  background: #1f1f1f;
+  color: #f4f4f4;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.playlist-detail-main {
+  min-height: 100vh;
+  /* Đã trả margin-left về 0, không còn bị khuyết 1 khoảng trống bên trái nữa */
+  margin-left: 0; 
+  padding: 80px 40px 42px;
+}
+
+.playlist-detail-layout {
+  display: flex;
+  gap: 48px;
+}
+
+/* Sidebar nhỏ bên trong trang (Nội dung của kênh) */
+.playlist-detail-inner-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.playlist-detail-sidebar-header {
+  margin-bottom: 24px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-button:hover {
+  color: #fff;
+}
+
+.playlist-detail-preview {
+  margin-bottom: 16px;
+}
+
+.playlist-detail-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #333;
+  margin-bottom: 16px;
+}
+
+.playlist-detail-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playlist-detail-thumbnail-placeholder {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a,
+    #1a1a1a 10px,
+    #222 10px,
+    #222 20px
+  );
+}
+
+.playlist-detail-label {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0 0 6px 0;
+}
+
+.playlist-detail-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.playlist-detail-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 20px 0;
+}
+
+/* Tabs */
+.playlist-detail-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.playlist-tab {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #f1f1f1;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.playlist-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.playlist-tab.active {
+  background: #3f3f3f;
+  font-weight: 500;
+}
+
+/* Nội dung chính */
+.playlist-detail-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.playlist-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 16px;
+}
+
+.playlist-detail-header h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: #fff;
+}
+
+.playlist-detail-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-cancel {
+  padding: 8px 16px;
+  border: 1px solid #555;
+  border-radius: 18px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-save {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 18px;
+  background: #fff;
+  color: #0f0f0f;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background: #e5e5e5;
+}
+
+/* Form Layout 2 cột */
+.playlist-detail-form {
+  display: flex;
+  gap: 32px;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.main-col {
+  flex: 2;
+}
+
+.side-col {
+  flex: 1;
+}
+
+/* Kiểu dáng Outlined Input */
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: #aaa;
+  background: #1f1f1f; 
+  padding: 0 4px;
+  pointer-events: none;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 16px 14px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #3ea6ff; 
+}
+
+.input-group input:focus + label,
+.input-group select:focus + label,
+.input-group textarea:focus + label {
+  color: #3ea6ff;
+}
+
+.input-group select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 200px;
+}
+
+/* Videos tab */
+.playlist-videos-tab {
+  padding: 40px 0;
+}
+
+.no-videos-message {
+  color: #888;
+  font-size: 14px;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ChannelProfilePage from "./pages/ChannelProfilePage";
 import EditVideoPage from "./pages/EditVideoPage";
+import PlaylistDetailPage from "./pages/PlaylistDetailPage";
 import PlaylistManagementPage from "./pages/PlaylistManagementPage";
 import StatisticsPage from "./pages/StatisticsPage";
 import UploadVideoPage from "./pages/UploadVideoPage";
@@ -8,9 +9,11 @@ import VideoManagementPage from "./pages/VideoManagementPage";
 
 export default function App() {
   const [page, setPage] = useState("manageVideos");
+  const [selectedPlaylist, setSelectedPlaylist] = useState(null);
 
-  function handleNavigate(nextPage) {
-    if (["profile", "statistics", "manageVideos", "uploadVideo", "editVideo", "playlists"].includes(nextPage)) {
+  function handleNavigate(nextPage, data) {
+    if (["profile", "statistics", "manageVideos", "uploadVideo", "editVideo", "playlists", "playlistDetail"].includes(nextPage)) {
+      if (data) setSelectedPlaylist(data);
       setPage(nextPage);
     }
   }
@@ -21,6 +24,17 @@ export default function App() {
 
   if (page === "statistics") {
     return <StatisticsPage activeItem={page} onNavigate={handleNavigate} />;
+  }
+
+  if (page === "playlistDetail") {
+    return (
+      <PlaylistDetailPage
+        activeItem="playlists"
+        onNavigate={handleNavigate}
+        playlist={selectedPlaylist}
+        onBack={() => handleNavigate("playlists")}
+      />
+    );
   }
 
   if (page === "playlists") {
